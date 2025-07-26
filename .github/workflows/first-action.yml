@@ -1,10 +1,12 @@
-name: First Workflow
-on: workflow_dispatch
+name: hs_workflow_intro_to_github_actions
+on: [push]
 jobs:
-  first-job:
+  show-secret-phrase:
     runs-on: ubuntu-latest
-    steps: 
-      - name: Print greeting
-        run: |
-            echo "Hello World"
-            echo "Done - bye"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+         repository: abystoma/test
+         ref: main
+      - name: Show me the answer
+        run: cat answer.txt
